@@ -1,0 +1,875 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubernetes.io/limit-ranger: 'LimitRanger plugin set: cpu request for container
+        kube-hunter'
+    creationTimestamp: "2020-12-16T19:47:38Z"
+    generateName: hunt-569bdc44db-
+    labels:
+      app: hunt
+      pod-template-hash: 569bdc44db
+    name: hunt-569bdc44db-vr4dx
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: hunt-569bdc44db
+      uid: 2cd7fd81-63e8-41ae-be65-29e5fdc1f0ce
+    resourceVersion: "14869"
+    selfLink: /api/v1/namespaces/default/pods/hunt-569bdc44db-vr4dx
+    uid: 5c2272bd-7322-44c2-9ab4-7801b04f664b
+  spec:
+    containers:
+    - image: docker.io/aquasec/kube-hunter:latest
+      imagePullPolicy: Always
+      name: kube-hunter
+      resources:
+        requests:
+          cpu: 100m
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: default-token-fcr4k
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: gke-gk-cluster-default-pool-5602b411-32vn
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: default-token-fcr4k
+      secret:
+        defaultMode: 420
+        secretName: default-token-fcr4k
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2020-12-16T19:47:46Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2020-12-16T20:19:22Z"
+      message: 'containers with unready status: [kube-hunter]'
+      reason: ContainersNotReady
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2020-12-16T20:19:22Z"
+      message: 'containers with unready status: [kube-hunter]'
+      reason: ContainersNotReady
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2020-12-16T19:47:46Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://79c25c7d7a77ec2e4254711e3eeab2d42b0b367b376fbe52219d5fbaea499df7
+      image: aquasec/kube-hunter:latest
+      imageID: docker-pullable://aquasec/kube-hunter@sha256:676092b652a035194b9015b56a35588331745cc8534d88df5b7e157cb50ed742
+      lastState:
+        terminated:
+          containerID: docker://79c25c7d7a77ec2e4254711e3eeab2d42b0b367b376fbe52219d5fbaea499df7
+          exitCode: 0
+          finishedAt: "2020-12-16T20:19:22Z"
+          reason: Completed
+          startedAt: "2020-12-16T20:19:21Z"
+      name: kube-hunter
+      ready: false
+      restartCount: 11
+      started: false
+      state:
+        waiting:
+          message: back-off 5m0s restarting failed container=kube-hunter pod=hunt-569bdc44db-vr4dx_default(5c2272bd-7322-44c2-9ab4-7801b04f664b)
+          reason: CrashLoopBackOff
+    hostIP: 10.128.0.52
+    phase: Running
+    podIP: 10.12.0.16
+    podIPs:
+    - ip: 10.12.0.16
+    qosClass: Burstable
+    startTime: "2020-12-16T19:47:46Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubernetes.io/limit-ranger: 'LimitRanger plugin set: cpu request for container
+        kube-hunter'
+    creationTimestamp: "2020-12-16T19:49:11Z"
+    generateName: kube-hunter-
+    labels:
+      controller-uid: 6aedb045-aee7-42ce-95e5-786a7a57a52f
+      job-name: kube-hunter
+    name: kube-hunter-fhv9g
+    namespace: default
+    ownerReferences:
+    - apiVersion: batch/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Job
+      name: kube-hunter
+      uid: 6aedb045-aee7-42ce-95e5-786a7a57a52f
+    resourceVersion: "9501"
+    selfLink: /api/v1/namespaces/default/pods/kube-hunter-fhv9g
+    uid: 964673e3-3374-45c7-a492-f4c8c651f2e4
+  spec:
+    containers:
+    - args:
+      - --pod
+      command:
+      - kube-hunter
+      image: aquasec/kube-hunter
+      imagePullPolicy: Always
+      name: kube-hunter
+      resources:
+        requests:
+          cpu: 100m
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: default-token-fcr4k
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: gke-gk-cluster-default-pool-5602b411-32vn
+    priority: 0
+    restartPolicy: Never
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: default-token-fcr4k
+      secret:
+        defaultMode: 420
+        secretName: default-token-fcr4k
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2020-12-16T19:57:27Z"
+      reason: PodCompleted
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2020-12-16T19:57:42Z"
+      reason: PodCompleted
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2020-12-16T19:57:42Z"
+      reason: PodCompleted
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2020-12-16T19:57:26Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://17856fedeb277ce19e67dc1c2b5dca86b267abba94fa1d544ea86a74a96e5b5f
+      image: aquasec/kube-hunter:latest
+      imageID: docker-pullable://aquasec/kube-hunter@sha256:676092b652a035194b9015b56a35588331745cc8534d88df5b7e157cb50ed742
+      lastState: {}
+      name: kube-hunter
+      ready: false
+      restartCount: 0
+      started: false
+      state:
+        terminated:
+          containerID: docker://17856fedeb277ce19e67dc1c2b5dca86b267abba94fa1d544ea86a74a96e5b5f
+          exitCode: 0
+          finishedAt: "2020-12-16T19:57:41Z"
+          reason: Completed
+          startedAt: "2020-12-16T19:57:28Z"
+    hostIP: 10.128.0.52
+    phase: Succeeded
+    podIP: 10.12.0.17
+    podIPs:
+    - ip: 10.12.0.17
+    qosClass: Burstable
+    startTime: "2020-12-16T19:57:27Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubernetes.io/limit-ranger: 'LimitRanger plugin set: cpu request for container
+        cad-site'
+    creationTimestamp: "2020-12-16T19:32:40Z"
+    generateName: web-7fbcf755db-
+    labels:
+      app: web
+      pod-template-hash: 7fbcf755db
+    name: web-7fbcf755db-hgzbz
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: web-7fbcf755db
+      uid: 8a63f38b-ce2c-47ca-b38c-a596b57b3905
+    resourceVersion: "2993"
+    selfLink: /api/v1/namespaces/default/pods/web-7fbcf755db-hgzbz
+    uid: b8765456-ed6d-41f4-a234-7a75c1a6f0d0
+  spec:
+    containers:
+    - image: us.gcr.io/gce-integration/cad-site:version1
+      imagePullPolicy: IfNotPresent
+      name: cad-site
+      resources:
+        requests:
+          cpu: 100m
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: default-token-fcr4k
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: gke-gk-cluster-default-pool-5602b411-32vn
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: default-token-fcr4k
+      secret:
+        defaultMode: 420
+        secretName: default-token-fcr4k
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2020-12-16T19:32:40Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2020-12-16T19:32:42Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2020-12-16T19:32:42Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2020-12-16T19:32:40Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://1059187eb80c3100a1648d29f93e4c3d5a08972b6efdfe0dfb6c619dc8cbcce9
+      image: us.gcr.io/gce-integration/cad-site:version1
+      imageID: docker-pullable://us.gcr.io/gce-integration/cad-site@sha256:9bb3dcb5efbd498a0a85ba6af2cbec921551d662e9bd9c975e89eafb914efb6f
+      lastState: {}
+      name: cad-site
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2020-12-16T19:32:41Z"
+    hostIP: 10.128.0.52
+    phase: Running
+    podIP: 10.12.0.14
+    podIPs:
+    - ip: 10.12.0.14
+    qosClass: Burstable
+    startTime: "2020-12-16T19:32:40Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubernetes.io/limit-ranger: 'LimitRanger plugin set: cpu request for container
+        cad-site'
+    creationTimestamp: "2020-12-16T19:57:26Z"
+    generateName: web-server-6df49c8758-
+    labels:
+      app: web-server
+      pod-template-hash: 6df49c8758
+    name: web-server-6df49c8758-v8wks
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: web-server-6df49c8758
+      uid: e9b8761f-3897-406b-bb18-874c4f59d0b5
+    resourceVersion: "14756"
+    selfLink: /api/v1/namespaces/default/pods/web-server-6df49c8758-v8wks
+    uid: 427f829b-d356-48b4-a7cd-56bb2c082224
+  spec:
+    containers:
+    - image: us.gcr.io/integration-gce/cad-site:version1
+      imagePullPolicy: IfNotPresent
+      name: cad-site
+      resources:
+        requests:
+          cpu: 100m
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: default-token-fcr4k
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: gke-gk-cluster-default-pool-5602b411-32vn
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: default-token-fcr4k
+      secret:
+        defaultMode: 420
+        secretName: default-token-fcr4k
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2020-12-16T19:57:42Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2020-12-16T19:57:42Z"
+      message: 'containers with unready status: [cad-site]'
+      reason: ContainersNotReady
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2020-12-16T19:57:42Z"
+      message: 'containers with unready status: [cad-site]'
+      reason: ContainersNotReady
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2020-12-16T19:57:42Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - image: us.gcr.io/integration-gce/cad-site:version1
+      imageID: ""
+      lastState: {}
+      name: cad-site
+      ready: false
+      restartCount: 0
+      started: false
+      state:
+        waiting:
+          message: Back-off pulling image "us.gcr.io/integration-gce/cad-site:version1"
+          reason: ImagePullBackOff
+    hostIP: 10.128.0.52
+    phase: Pending
+    podIP: 10.12.0.18
+    podIPs:
+    - ip: 10.12.0.18
+    qosClass: Burstable
+    startTime: "2020-12-16T19:57:42Z"
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2020-12-16T19:22:43Z"
+    labels:
+      component: apiserver
+      provider: kubernetes
+    name: kubernetes
+    namespace: default
+    resourceVersion: "144"
+    selfLink: /api/v1/namespaces/default/services/kubernetes
+    uid: 8d0428cd-b628-42fa-9b39-9d79de545327
+  spec:
+    clusterIP: 10.15.240.1
+    ports:
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 443
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2020-12-16T19:39:21Z"
+    finalizers:
+    - service.kubernetes.io/load-balancer-cleanup
+    labels:
+      app: web
+    name: web
+    namespace: default
+    resourceVersion: "5086"
+    selfLink: /api/v1/namespaces/default/services/web
+    uid: 1aa0ef9e-3a5e-47b4-ae6e-a20e8c099c65
+  spec:
+    clusterIP: 10.15.245.95
+    externalTrafficPolicy: Cluster
+    ports:
+    - nodePort: 30607
+      port: 80
+      protocol: TCP
+      targetPort: 80
+    selector:
+      app: web
+    sessionAffinity: None
+    type: LoadBalancer
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 34.123.212.47
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2020-12-16T19:43:23Z"
+    generation: 1
+    labels:
+      app: hunt
+    name: hunt
+    namespace: default
+    resourceVersion: "14809"
+    selfLink: /apis/apps/v1/namespaces/default/deployments/hunt
+    uid: d74ec334-7d34-4e7d-9439-3e646ae98de8
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: hunt
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: hunt
+      spec:
+        containers:
+        - image: docker.io/aquasec/kube-hunter:latest
+          imagePullPolicy: Always
+          name: kube-hunter
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    conditions:
+    - lastTransitionTime: "2020-12-16T19:43:23Z"
+      lastUpdateTime: "2020-12-16T19:43:29Z"
+      message: ReplicaSet "hunt-569bdc44db" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2020-12-16T20:19:22Z"
+      lastUpdateTime: "2020-12-16T20:19:22Z"
+      message: Deployment does not have minimum availability.
+      reason: MinimumReplicasUnavailable
+      status: "False"
+      type: Available
+    observedGeneration: 1
+    replicas: 1
+    unavailableReplicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2020-12-16T19:30:58Z"
+    generation: 1
+    labels:
+      app: web
+    name: web
+    namespace: default
+    resourceVersion: "2995"
+    selfLink: /apis/apps/v1/namespaces/default/deployments/web
+    uid: 1f06cf24-658e-4810-bca7-7338d8f55058
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: web
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: web
+      spec:
+        containers:
+        - image: us.gcr.io/gce-integration/cad-site:version1
+          imagePullPolicy: IfNotPresent
+          name: cad-site
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2020-12-16T19:30:58Z"
+      lastUpdateTime: "2020-12-16T19:31:05Z"
+      message: ReplicaSet "web-7fbcf755db" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2020-12-16T19:32:42Z"
+      lastUpdateTime: "2020-12-16T19:32:42Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2020-12-16T19:24:50Z"
+    generation: 1
+    labels:
+      app: web-server
+    name: web-server
+    namespace: default
+    resourceVersion: "11899"
+    selfLink: /apis/apps/v1/namespaces/default/deployments/web-server
+    uid: 729fcf90-8f17-4387-b228-46865be4315f
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: web-server
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: web-server
+      spec:
+        containers:
+        - image: us.gcr.io/integration-gce/cad-site:version1
+          imagePullPolicy: IfNotPresent
+          name: cad-site
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    conditions:
+    - lastTransitionTime: "2020-12-16T19:24:50Z"
+      lastUpdateTime: "2020-12-16T19:24:50Z"
+      message: Deployment does not have minimum availability.
+      reason: MinimumReplicasUnavailable
+      status: "False"
+      type: Available
+    - lastTransitionTime: "2020-12-16T20:07:27Z"
+      lastUpdateTime: "2020-12-16T20:07:27Z"
+      message: ReplicaSet "web-server-6df49c8758" has timed out progressing.
+      reason: ProgressDeadlineExceeded
+      status: "False"
+      type: Progressing
+    observedGeneration: 1
+    replicas: 1
+    unavailableReplicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2020-12-16T19:43:23Z"
+    generation: 1
+    labels:
+      app: hunt
+      pod-template-hash: 569bdc44db
+    name: hunt-569bdc44db
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: hunt
+      uid: d74ec334-7d34-4e7d-9439-3e646ae98de8
+    resourceVersion: "14808"
+    selfLink: /apis/apps/v1/namespaces/default/replicasets/hunt-569bdc44db
+    uid: 2cd7fd81-63e8-41ae-be65-29e5fdc1f0ce
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: hunt
+        pod-template-hash: 569bdc44db
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: hunt
+          pod-template-hash: 569bdc44db
+      spec:
+        containers:
+        - image: docker.io/aquasec/kube-hunter:latest
+          imagePullPolicy: Always
+          name: kube-hunter
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    replicas: 1
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2020-12-16T19:30:58Z"
+    generation: 1
+    labels:
+      app: web
+      pod-template-hash: 7fbcf755db
+    name: web-7fbcf755db
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: web
+      uid: 1f06cf24-658e-4810-bca7-7338d8f55058
+    resourceVersion: "2994"
+    selfLink: /apis/apps/v1/namespaces/default/replicasets/web-7fbcf755db
+    uid: 8a63f38b-ce2c-47ca-b38c-a596b57b3905
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: web
+        pod-template-hash: 7fbcf755db
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: web
+          pod-template-hash: 7fbcf755db
+      spec:
+        containers:
+        - image: us.gcr.io/gce-integration/cad-site:version1
+          imagePullPolicy: IfNotPresent
+          name: cad-site
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2020-12-16T19:24:50Z"
+    generation: 1
+    labels:
+      app: web-server
+      pod-template-hash: 6df49c8758
+    name: web-server-6df49c8758
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: web-server
+      uid: 729fcf90-8f17-4387-b228-46865be4315f
+    resourceVersion: "9430"
+    selfLink: /apis/apps/v1/namespaces/default/replicasets/web-server-6df49c8758
+    uid: e9b8761f-3897-406b-bb18-874c4f59d0b5
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: web-server
+        pod-template-hash: 6df49c8758
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: web-server
+          pod-template-hash: 6df49c8758
+      spec:
+        containers:
+        - image: us.gcr.io/integration-gce/cad-site:version1
+          imagePullPolicy: IfNotPresent
+          name: cad-site
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    replicas: 1
+- apiVersion: batch/v1
+  kind: Job
+  metadata:
+    creationTimestamp: "2020-12-16T19:49:11Z"
+    labels:
+      controller-uid: 6aedb045-aee7-42ce-95e5-786a7a57a52f
+      job-name: kube-hunter
+    name: kube-hunter
+    namespace: default
+    resourceVersion: "9504"
+    selfLink: /apis/batch/v1/namespaces/default/jobs/kube-hunter
+    uid: 6aedb045-aee7-42ce-95e5-786a7a57a52f
+  spec:
+    backoffLimit: 4
+    completions: 1
+    parallelism: 1
+    selector:
+      matchLabels:
+        controller-uid: 6aedb045-aee7-42ce-95e5-786a7a57a52f
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          controller-uid: 6aedb045-aee7-42ce-95e5-786a7a57a52f
+          job-name: kube-hunter
+      spec:
+        containers:
+        - args:
+          - --pod
+          command:
+          - kube-hunter
+          image: aquasec/kube-hunter
+          imagePullPolicy: Always
+          name: kube-hunter
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Never
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    completionTime: "2020-12-16T19:57:42Z"
+    conditions:
+    - lastProbeTime: "2020-12-16T19:57:42Z"
+      lastTransitionTime: "2020-12-16T19:57:42Z"
+      status: "True"
+      type: Complete
+    startTime: "2020-12-16T19:49:11Z"
+    succeeded: 1
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
